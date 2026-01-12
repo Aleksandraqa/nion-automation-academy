@@ -1,0 +1,33 @@
+{
+  "name": "my-cypress-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "triggerAllTests-headless": "npx cypress run",
+    "triggerAllTests-headed": "npx cypress run --headed",
+    "triggerAllTests-chrome": "npx cypress run --browser chrome",
+    "triggerTestSuite": "npx cypress run --browser chrome --headed --spec cypress/e2e/webdriver-uni/contact-us.js --env first_name=Tim",
+    "triggerAllTests-autoTestStore": "npx cypress run --spec cypress/e2e/automation-test-store",
+    "junit-merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/results.xml",
+    "delete-junit-report": "rm -rf cypress/results/junit/results.xml",
+    "delete-results": "rm -rf cypress/results/* || true",
+    "mochawesome-merge": "npx mochawesome-merge cypress/results/mochawesome/*.json > mochawesome.json && npx marge mochawesome.json",
+    "delete-mochawesome-report": "rm -rf mochawesome-report/* || true",
+    "cypress-regression-pack": "npm run delete-results && npm run delete-mochawesome-report && npm run triggerAllTests-headless && npm run mochawesome-merge",
+    "cypress-regression-suite-pack": "npm run delete-results && npm run delete-mochawesome-report && npm run triggerTestSuite && npm run mochawesome-merge",
+    "troggerAllTests-qa": "npx cypress run --env congofFile=qa"
+  },
+  "keywords": [],
+  "author": "Aleksandra Mitrevska",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@cypress/xpath": "^2.0.3",
+    "cypress": "^13.17.0",
+    "cypress-multi-reporters": "^2.0.5",
+    "mocha-junit-reporter": "^2.2.1",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.0",
+    "mochawesome-report-generator": "^6.3.2"
+  }
+}

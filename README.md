@@ -1,1 +1,1 @@
-# nion-automation-academy
+# cypress-automation-framework
