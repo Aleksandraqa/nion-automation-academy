@@ -1,34 +1,15 @@
+import Homepage_PO from '../../support/pageObjects/webdriver-uni/Homepage_PO'
+import Data_Tables_PO from '../../support/pageObjects/webdriver-uni/Data_Tables_PO';
 /// <reference types="Cypress" />
 describe("Handling data via webdriveruni", () => {
+  const homepage_PO = new Homepage_PO();
+  const data_Tables_PO = new Data_Tables_PO();
   beforeEach(() => {
     cy.visit("/");
-    cy.get("#data-table").invoke("removeAttr", "target").click({ force: true });
+    homepage_PO.clickOn_DataTablesAndButtonStates_Button();
   })
-  it("Calculate and assert the total age of all users", () => {
-    // create an array
-    var userDetails = [];
-    //third variable
-    let numb = 0;
-    // iterating through each of the cells in the table
-    cy.get('#thumbnail-1 td').each(($el, index, $list) => {
-        // get each text in each cell and store in the index value within the array 
-        userDetails[index] = $el.text();
-    }).then(() => {
-        // create another variable
-        var i;
-        // create a for loop
-        for(i = 0; i < userDetails.length; i++) {
-          if(Number(userDetails[i])) {
-            //if it is a nuber it will store in the variable numb
-            numb += Number(userDetails[i])
-          }
-          
-          //cy.log(userDetails[i])
-        }
-        cy.log("Found total age: " + numb)
-        //asssertion
-        expect(numb).to.eq(322)
-    })
+  it.only("Calculate and assert the total age of all users", () => {
+    data_Tables_PO.calculate_Total_Users_Age(322); 
   });
 
   it("Calculate and assert the age of a given user based on last name", () => {
