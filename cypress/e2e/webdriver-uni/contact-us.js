@@ -26,7 +26,7 @@ describe("Test Contact Us form via WebdriverUni", () => {
     //cy.pause();
   })
 
-  it.only("Should be able to submit a successful submission via contact us form", () => {
+  it("Should be able to submit a successful submission via contact us form", () => {
      // cypress code 
     // cy.visit("https://www.webdriveruniversity.com/") 
     // cy.get('#contact-us').click({force: true})  
